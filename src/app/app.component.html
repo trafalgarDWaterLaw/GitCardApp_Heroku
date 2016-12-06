@@ -1,0 +1,30 @@
+<br>
+<br>
+<div class="leftSpacing">
+	<input class="inputText" #newUserUrl placeholder="github login" (blur)="addUser(newUserUrl.value); newUserUrl.value='' "
+	/>
+	<button class="btn btn-info" type="submit">Add</button>
+</div>
+<br>
+<hr class="hline">
+<br>
+<br>
+<ul class="nav nav-pills">
+	<label class="leftSpacing">Sort by:</label>
+	<button class="btn btn-info" type="submit" (click)="sortByName()">Name</button>
+	<button class="btn btn-info" type="submit" (click)="sortByLocation()">Location</button>
+	<button class="btn btn-info" type="submit" (click)="sortByFollowers()">Followers</button>
+</ul>
+<br>
+<br>
+<ul class="users">
+	<li *ngFor="let person of userDetailArr" class="user" >
+		<a href="{{person.htmlUrl}}">
+			<img src={{person.avatarUrl}} class="img-thumbnail" />
+			<button type="button" class="close" aria-label="Close" onclick='return false;' (click)="removeThisElement(person)"><span aria-hidden="true" class="place">&times;</span></button>
+			<h4>{{person.name}}</h4>
+			<p><strong>Location: </strong>{{person.location}}</p>
+			<p><strong>Followers: </strong>{{person.followers}}</p>
+		</a>
+	</li>
+</ul>
